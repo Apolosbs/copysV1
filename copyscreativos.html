@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Copys Creativos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .copy-box {
+            min-height: 100px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container animate__animated animate__fadeIn">
+        <h1 class="mb-4">Generador de Copys Creativos</h1>
+        <select id="tipo" class="form-select mb-3">
+            <option value="promocion">Promoción</option>
+            <option value="inspiracion">Inspiración</option>
+            <option value="testimonial">Testimonial</option>
+            <option value="cta">Llamado a la acción</option>
+        </select>
+        <select id="emocion" class="form-select mb-3">
+            <option value="alegria">Alegría</option>
+            <option value="urgencia">Urgencia</option>
+            <option value="sorpresa">Sorpresa</option>
+            <option value="confianza">Confianza</option>
+        </select>
+        <button class="btn btn-primary" onclick="generarCopy()">Generar Copy</button>
+        <div id="copy" class="copy-box mt-4 animate__animated"></div>
+    </div>
+
+    <script>
+        const copys = {
+            promocion: {
+                alegria: "🎉 ¡No te lo pierdas! Descuentos increíbles por tiempo limitado. 🎊",
+                urgencia: "🚀 Últimas horas para aprovechar esta oferta especial. ¡Actúa ya!",
+                sorpresa: "😱 ¡Oferta secreta desbloqueada! Solo por hoy, precios de locura.",
+                confianza: "💯 Calidad garantizada en cada compra. ¡Confía en nosotros!"
+            },
+            inspiracion: {
+                alegria: "🌞 Sonríe, la vida es hoy. ¡Hazlo con pasión y energía!",
+                urgencia: "⏳ No dejes para mañana lo que puede hacerte feliz hoy. ¡Ve por ello!",
+                sorpresa: "🌟 A veces, lo inesperado es lo mejor que puede pasarte. ¡Sigue adelante!",
+                confianza: "💪 Cree en ti, porque eres capaz de lograr cosas increíbles."
+            },
+            testimonial: {
+                alegria: "😊 ‘Gracias a este producto, mi día a día es más feliz y fácil.’",
+                urgencia: "⚡ ‘Desde que lo probé, no puedo vivir sin él. ¡Hazlo ahora!’",
+                sorpresa: "🤩 ‘Jamás pensé que algo tan simple pudiera cambiar mi vida.’",
+                confianza: "👍 ‘Recomendado al 100%. No te arrepentirás de probarlo.’"
+            },
+            cta: {
+                alegria: "🎊 ¡Es tu momento! Únete y sé parte de algo increíble. 💫",
+                urgencia: "🔥 ¡No dejes pasar esta oportunidad! El tiempo corre. ⏰",
+                sorpresa: "🎁 ¡Sorpresa especial solo para ti! Haz clic y descúbrelo. 🎉",
+                confianza: "🔒 ¡Tu mejor decisión empieza aquí! Únete con confianza."
+            }
+        };
+
+        function generarCopy() {
+            let tipo = document.getElementById("tipo").value;
+            let emocion = document.getElementById("emocion").value;
+            let mensaje = copys[tipo][emocion];
+            let copyBox = document.getElementById("copy");
+            copyBox.innerHTML = mensaje;
+            copyBox.classList.remove("animate__fadeIn");
+            void copyBox.offsetWidth;
+            copyBox.classList.add("animate__fadeIn");
+        }
+    </script>
+</body>
+</html>
